@@ -1,12 +1,12 @@
 class DirectedEdge(object):
     
-    def __init__(self, fr, to, weight=None):
+    def __init__(self, fr, to, weight=0):
         self.fr = fr
         self.to = to
-        self.weight = weight
+        self._weight = weight
         
     def __str__(self):
-        return "{} --> {}".format(self.fr, self.to)  
+        return "{} --> {}, {}".format(self.fr, self.to, self._weight)  
     
     def __lt__(self, other):
         return self.weight < other.weight
@@ -17,8 +17,8 @@ class DirectedEdge(object):
     def __eq__(self, other):
         return self.weight == other.weight
     
-    def getWeight(self):
-        return self.weight
+    def weight(self):
+        return self._weight
             
     def source(self):
         return self.fr
